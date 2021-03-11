@@ -6,40 +6,26 @@ namespace BatteryManagement
 {
     public static class BatteryBreachLevel
     {
-        public static void CheckTemperatureThreshold(Battery battery)
-        {
-            if (battery.TempMin <= battery.temperature && battery.temperature <= battery.TempMin + battery.threshold)
-            {
-                BatteryMessages.DisplayWarnings("Temperature", Constants.LowDischarge);
-            }
 
-            if (battery.TempMax - battery.threshold <= battery.temperature && battery.temperature <= battery.TempMax)
+        public static void CheckMinBreachLevel(float chargeLevel, float ActualValue, float minValue)
+        {
+            float chargeRate = chargeLevel + minValue;
+
+            if (minValue <= ActualValue && ActualValue <= chargeRate)
             {
-                BatteryMessages.DisplayWarnings("Temperature", Constants.PeakDischarge);
+                Warnings.Discharge = Constants.LowDischarge;
+                BatteryMessages.DisplayWarningMessage(Warnings.Discharge);
             }
         }
-        public static void CheckSocThreshold(Battery battery)
-        {
-            if (battery.SocMin <= battery.StateCharge && battery.StateCharge <= battery.SocMin + battery.threshold)
-            {
-                BatteryMessages.DisplayWarnings("State Of Charge", Constants.LowDischarge);
-            }
 
-            if (battery.SocMax - battery.threshold <= battery.StateCharge && battery.StateCharge <= battery.SocMax)
-            {
-                BatteryMessages.DisplayWarnings("State Of Charge", Constants.PeakDischarge);
-            }
-        }
-        public static void CheckChargeRateThreshold(Battery battery)
+        public static void CheckMaxBreachLevel(float chargeLevel, float actualValue, float maxValue)
         {
-            if (battery.ChargeRateMin <= battery.ChargeRate && battery.ChargeRate <= battery.ChargeRateMin + battery.threshold)
-            {
-                BatteryMessages.DisplayWarnings("Charge Rate", Constants.LowDischarge);
-            }
+            float chargeRate = maxValue - chargeLevel;
 
-            if (battery.ChargeRateMax - battery.threshold <= battery.ChargeRate && battery.ChargeRate <= battery.ChargeRateMax)
+            if (chargeRate <= actualValue && actualValue<= maxValue)
             {
-                BatteryMessages.DisplayWarnings("Charge Rate", Constants.PeakDischarge);
+                Warnings.ChargePeak = Constants.PeakDischarge;
+                BatteryMessages.DisplayWarningMessage(Warnings.ChargePeak);
             }
         }
     }
