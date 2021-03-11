@@ -6,24 +6,26 @@ namespace BatteryManagement
 {
    public static class BatteryMessages
     {
-        public static bool GermanLanguage = false;
-        public static void DisplayStatus(string attribute, Constants.BatteryStates batteryCondition)
+        public static bool isGerman = false;
+        public static void DisplayBatteryStatus(string property, BatteryStates batteryLevel)
         {
-            if (GermanLanguage)
+            if (isGerman)
             {
-                Console.WriteLine($"Batterie {attribute} ist {batteryCondition}");
+                Console.WriteLine($"Batterie {property} ist {batteryLevel}");
                 return;
             }
-            Console.WriteLine($"Battery {attribute} is {batteryCondition}");
+            Console.WriteLine($"Battery {property} is {batteryLevel}");
         }
-        public static void DisplayWarnings(string attribute, string warningMsg)
+
+        public static void DisplayWarningMessage(string warning)
         {
-            if (GermanLanguage)
+            if (isGerman)
             {
-                Console.WriteLine($"Warnung-{attribute}: {warningMsg}");
+                Console.WriteLine($"{warning}");
                 return;
             }
-            Console.WriteLine($"Warning-{attribute}: {warningMsg}");
+
+            Console.WriteLine($"{warning}");
         }
     }
 }
