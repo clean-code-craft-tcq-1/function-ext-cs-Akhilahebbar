@@ -7,6 +7,7 @@
      <Compile Include="BatteryMessages.cs"/>
      <Compile Include="Constants.cs"/>
       <Compile Include="TestBatteryStatus.cs"/>
+     <Compile Include="IReporter.cs"/>
   </ItemGroup>
   <Target Name="Build">
     <Csc Sources="@(Compile)"/>  
