@@ -6,15 +6,14 @@ class Checker
 {
    
     static int Main() {
-       BatteryMessages.isGerman = true;
+         TestBatteryStatus batterystatus = new TestBatteryStatus();
 
-            TestBatteryStatus.CheckBatteryStatus(-1, 20, 0.3f);
-            TestBatteryStatus.CheckBatteryStatus(1, 22, 0.4f);
 
-            BatteryMessages.isGerman = false;
-
-            TestBatteryStatus.CheckBatteryStatus(100, 82, 0.1f);
-            TestBatteryStatus.CheckBatteryStatus(1, 22, 0.4f);
+            batterystatus.CheckBatteryStatus(-1, 20, 0.3f);
+            batterystatus.CheckBatteryStatus(1, 22, 0.4f);
+            batterystatus.CheckBatteryStatus(100, 82, 0.1f);
+            batterystatus.CheckBatteryStatus(1, 22, 0.4f);
+          
             return 0;
     }
 }
