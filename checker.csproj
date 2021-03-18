@@ -8,6 +8,8 @@
      <Compile Include="Constants.cs"/>
       <Compile Include="TestBatteryStatus.cs"/>
      <Compile Include="IReporter.cs"/>
+      <Compile Include="UIReporter.cs"/>
+      <Compile Include="TextReporter.cs"/>
   </ItemGroup>
   <Target Name="Build">
     <Csc Sources="@(Compile)"/>  
